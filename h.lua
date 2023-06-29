@@ -14,6 +14,8 @@ TRASHLIST = {'minecraft:cobblestone',
 	     'minecraft:tuff',
 	     'rootsclassic:blackcurrant',
 	     'rootsclassic:redcurrant',
+	     'rootsclassic:elderberry',
+	     'minecraft:apple',
 
 }
 
