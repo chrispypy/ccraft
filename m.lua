@@ -120,6 +120,28 @@ function fBack(n)
 	end
 end
 
+function go(str)
+  for i=1,#str do
+    if str[i] == "f" then forward() end
+    if str[i] == "b" then back() end
+    if str[i] == "u" then up() end
+    if str[i] == "d" then down() end
+    if str[i] == "r" then right() end
+    if str[i] == "l" then left() end
+  end
+end
+
+function fGo(str)
+  for i=1,#str do
+    if str[i] == "f" then fForward() end
+    if str[i] == "b" then fBack() end
+    if str[i] == "u" then fUp() end
+    if str[i] == "d" then fDown() end
+    if str[i] == "r" then right() end
+    if str[i] == "l" then left() end
+  end
+end
+
 
 
 function forceHome()
