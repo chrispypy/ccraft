@@ -25,7 +25,7 @@ end
 
 local function fetchFiles()
 	shell.run('wget '..list_url..' temp')
-	local src_file = fs.open('temp', 'r')
+	local src_file = fs.open(shell.dir()..'/temp', 'r')
 	local src = src_file.readAll()
 	src_file.close()
 	shell.run('rm temp')
