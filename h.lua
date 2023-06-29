@@ -33,7 +33,7 @@ function removeTrash()
 	local start_slot = turtle.getSelectedSlot()
 	inv = getInventory()
 	for _,trash in pairs(TRASHLIST) do
-		i = find(trash, inv)
+		i = find(inv, trash)
 		if i then 
 			turtle.select(i)
 			turtle.drop()
@@ -44,7 +44,7 @@ function removeTrash()
 end
 
 
-function find(item, list)
+function find(list, item)
 	for i,v in ipairs(list) do
 		if v == item then
 			return i
@@ -86,7 +86,7 @@ end
 
 function selectItem(item)
 	local inv = getInventory()
-	local i = find(item, inv)
+	local i = find(inv, item)
 	if i then
 		turtle.select(i)
 		return true

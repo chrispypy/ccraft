@@ -1,3 +1,4 @@
+os.loadAPI('/mods/H')
 X,Y,Z = 0,0,0
 Face = 0
 
@@ -31,7 +32,7 @@ function right(n)
 end
 
 function down(n)
-	if turtle.getFuelLevel() == 0 then turtle.refuel() end
+	if turtle.getFuelLevel() == 0 then turtle.refuel(1) end
 	if not n then n=1 end
 	for i=1,n do
 		if not turtle.down() then return false end
@@ -40,7 +41,7 @@ function down(n)
 	return true
 end
 function up(n)
-	if turtle.getFuelLevel() == 0 then turtle.refuel() end
+	if turtle.getFuelLevel() == 0 then turtle.refuel(1) end
 	if not n then n=1 end
 	for i=1,n do
 		if not turtle.up() then return false end
@@ -50,7 +51,7 @@ function up(n)
 end
 
 function forward(n)
-	if turtle.getFuelLevel() == 0 then turtle.refuel() end
+	if turtle.getFuelLevel() == 0 then turtle.refuel(1) end
 	if not n then n = 1 end
 	for i =1,n do
 		if not turtle.forward() then return false end
@@ -64,7 +65,7 @@ function forward(n)
 end
 
 function back(n)
-	if turtle.getFuelLevel() == 0 then turtle.refuel() end
+	if turtle.getFuelLevel() == 0 then turtle.refuel(1) end
 	if not n then n = 1 end
 	for i =1,n do
 		if not turtle.back() then return false end
@@ -78,7 +79,7 @@ function back(n)
 end
 
 function fDown(n)
-	if turtle.getFuelLevel() == 0 then turtle.refuel() end
+	if turtle.getFuelLevel() == 0 then turtle.refuel(1) end
 	if not n then n=1 end
 	local a, b = turtle.inspectDown()
 	if b.name and b.name == 'minecraft:bedrock' then return false end
@@ -92,7 +93,7 @@ function fDown(n)
 end
 
 function fUp(n)
-	if turtle.getFuelLevel() == 0 then turtle.refuel() end
+	if turtle.getFuelLevel() == 0 then turtle.refuel(1) end
 	if not n then n=1 end
 	for i=1,n do
 		while not up() do
@@ -142,6 +143,40 @@ function fGo(str)
   end
 end
 
+function detectUp(liste)
+  local a,b = turtle.detectUp()
+  local name = ""
+  if b.name then name = b.name end
+  return H.find(liste, name)
+end
+function detect(liste)
+  local a,b = turtle.detect()
+  local name = ""
+  if b.name then name = b.name end
+  return H.find(liste, name)
+end
+function detectDown(liste)
+  local a,b = turtle.detectDown()
+  local name = ""
+  if b.name then name = b.name end
+  return H.find(liste, name)
+end
+
+function rev(str)
+  local ret = ""
+  for i=1,#str do
+    local c = ""
+    if str[i] == "f" then c = "b" end
+    if str[i] == "b" then c = "f" end
+    if str[i] == "u" then c = "d" end
+    if str[i] == "d" then c = "u" end
+    if str[i] == "l" then c = "r" end
+    if str[i] == "r" then c = "l" end
+    ret = c..ret
+  end
+  return ret
+end
+
 
 
 function forceHome()
@@ -159,6 +194,7 @@ function forceHome()
 		fDown(Z)
 	end
 end
+
 
 --
 --   Face:
