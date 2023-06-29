@@ -13,6 +13,7 @@ TRASHLIST = {'minecraft:cobblestone',
 	     'minecraft:stick',
 	     'minecraft:tuff',
 	     'rootsclassic:blackcurrant',
+	     'rootsclassic:redcurrant',
 
 }
 
@@ -128,7 +129,7 @@ function cleanInv()
 	turtle.select(selected)
 end
 
-function saveTable(table,path)
+function saveTable(path, table)
 	local file = fs.open(path,"w")
 	file.write(textutils.serialize(table))
 	file.close()
