@@ -5,7 +5,7 @@ password = ""
 print("Commit Nachricht für "..filename..": ")
 commit_msg = read()
 
-file = fs.open(filename, "r")
+file = fs.open(shell.dir()..'/'..filename, "r")
 content = file.readAll()
 file.close()
 
