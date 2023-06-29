@@ -146,19 +146,19 @@ end
 function detectUp(liste)
   local a,b = turtle.detectUp()
   local name = ""
-  if b.name then name = b.name end
+  if b and b.name then name = b.name end
   return H.find(liste, name)
 end
 function detect(liste)
   local a,b = turtle.detect()
   local name = ""
-  if b.name then name = b.name end
+  if b and b.name then name = b.name end
   return H.find(liste, name)
 end
 function detectDown(liste)
   local a,b = turtle.detectDown()
   local name = ""
-  if b.name then name = b.name end
+  if b and b.name then name = b.name end
   return H.find(liste, name)
 end
 
