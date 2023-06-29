@@ -123,23 +123,23 @@ end
 
 function go(str)
   for i=1,#str do
-    if str[i] == "f" then forward() end
-    if str[i] == "b" then back() end
-    if str[i] == "u" then up() end
-    if str[i] == "d" then down() end
-    if str[i] == "r" then right() end
-    if str[i] == "l" then left() end
+    if string.sub(str, i, i) == "f" then forward() end
+    if string.sub(str, i, i) == "b" then back() end
+    if string.sub(str, i, i) == "u" then up() end
+    if string.sub(str, i, i) == "d" then down() end
+    if string.sub(str, i, i) == "r" then right() end
+    if string.sub(str, i, i) == "l" then left() end
   end
 end
 
 function fGo(str)
   for i=1,#str do
-    if str[i] == "f" then fForward() end
-    if str[i] == "b" then fBack() end
-    if str[i] == "u" then fUp() end
-    if str[i] == "d" then fDown() end
-    if str[i] == "r" then right() end
-    if str[i] == "l" then left() end
+    if string.sub(str, i, i) == "f" then fForward() end
+    if string.sub(str, i, i) == "b" then fBack() end
+    if string.sub(str, i, i) == "u" then fUp() end
+    if string.sub(str, i, i) == "d" then fDown() end
+    if string.sub(str, i, i) == "r" then right() end
+    if string.sub(str, i, i) == "l" then left() end
   end
 end
 
@@ -166,12 +166,12 @@ function rev(str)
   local ret = ""
   for i=1,#str do
     local c = ""
-    if str[i] == "f" then c = "b" end
-    if str[i] == "b" then c = "f" end
-    if str[i] == "u" then c = "d" end
-    if str[i] == "d" then c = "u" end
-    if str[i] == "l" then c = "r" end
-    if str[i] == "r" then c = "l" end
+    if string.sub(str, i, i) == "f" then c = "b" end
+    if string.sub(str, i, i) == "b" then c = "f" end
+    if string.sub(str, i, i) == "u" then c = "d" end
+    if string.sub(str, i, i) == "d" then c = "u" end
+    if string.sub(str, i, i) == "l" then c = "r" end
+    if string.sub(str, i, i) == "r" then c = "l" end
     ret = c..ret
   end
   return ret
