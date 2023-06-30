@@ -87,7 +87,7 @@ function push(fileName)
 	if fileName:sub(1,1) ~= '/' then
 		fileName = shell.dir()..'/'..fileName
 	end
-	file = fs.open(fileName)
+	file = fs.open(fileName, 'r')
 	if not file then print('File not found, aborting!') end
 	content = file.readAll()
 	file.close()
