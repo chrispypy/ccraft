@@ -83,7 +83,7 @@ local function pull(fileName, saveFile)
 	print('done!')
 end
 
-function push(fileName)
+function push(fileName, commit_msg)
 	if fileName:sub(1,1) ~= '/' then
 		fileName = shell.dir()..'/'..fileName
 	end
@@ -158,7 +158,8 @@ end
 
 if cmd == 'push' then
 	local file = arg[2]
-	push(file)
+	local commit_msg = arg[3]
+	push(file, commit_msg)
 end
 
 
