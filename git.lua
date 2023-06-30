@@ -171,7 +171,7 @@ end
 
 if cmd == 'push' then
 	local file = arg[2]
-	push(file, commit_msg)
+	push(file)
 end
 
 
