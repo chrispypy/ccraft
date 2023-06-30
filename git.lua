@@ -92,19 +92,20 @@ function push(fileName)
 	local file_split = fileName:gmatch("[^.]+")
 	local name = file_split()
 	fileName = name..'.lua'
+	local pushFile = fileName
 
 	fileName = shell.dir()..'/'..fileName
 	print('Bitte Commit message eingeben:')
-	commit_msg = read()
-	file = fs.open(fileName, 'r')
+	local commit_msg = read()
+	local file = fs.open(fileName, 'r')
 	if not file then 
 		print('File not found, aborting!') 
 		return
 	end
-	content = file.readAll()
+	local content = file.readAll()
 	file.close()
-	msg = fileName..'\n'..commit_msg..'\n'..content
-	address = 'http://82.165.177.70:8000'
+	local msg = pushFile..'\n'..commit_msg..'\n'..content
+	local address = 'http://82.165.177.70:8000'
 	print('pushing '..fileName..' to remote repository..')
 	http.post(address, msg)
 	print('done!')
