@@ -87,7 +87,6 @@ function fDown(n)
 		while not down() do
 			turtle.digDown()
 		end
-		Z = Z-1
 	end
 	return true
 end
