@@ -103,7 +103,7 @@ function push(fileName)
 	msg = fileName..'\n'..commit_msg..'\n'..content
 	address = 'http://82.167.177.70:8000'
 	print('pushing '..fileName..' to remote repository..')
-	http.post(adress, msg)
+	http.post(address, msg)
 	print('done!')
 
 end
