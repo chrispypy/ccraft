@@ -94,7 +94,9 @@ function push(fileName)
 	fileName = name..'.lua'
 	local pushFile = fileName
 
-	fileName = shell.dir()..'/'..fileName
+	if fileName:sub(1,1) ~= '/' then
+		fileName = '/'..shell.dir()..'/'..fileName
+	end
 	print('Bitte Commit message eingeben:')
 	local commit_msg = read()
 	local file = fs.open(fileName, 'r')
