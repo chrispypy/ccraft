@@ -83,6 +83,21 @@ local function pull(fileName, saveFile)
 	print('done!')
 end
 
+function push(fileName)
+	if fileName:sub(1,1) ~= '/' then
+		fileName = shell.dir()..'/'..fileName
+	file = fs.open(fileName)
+	if not file then print('File not found, aborting!') end
+	content = file.readAll()
+	file.close()
+	msg = fileName..'\n'..commit_msg..'\n'..content
+	address = 'http://82.167.177.70:8000'
+	print('pushing '..fileName..' to remote repository..')
+	http.post(adress, msg)
+	print('done!')
+
+end
+
 
 -- start of script
 
@@ -125,10 +140,8 @@ end
 
 if cmd == 'pull' then
 	shell.run('clear')
-	local spec = arg[1]
 	local file = arg[2]
 	local dest = arg[3]
-	if spec then
 		if file == 'all' then
 			local files = fetchFiles()
 			for _,fileName in pairs(files) do
@@ -137,12 +150,14 @@ if cmd == 'pull' then
 
 		else
 
-			if spec == 'pull' then
-				pull(file, dest)
-			end
+			pull(file, dest)
 		end
-	end
 	return
+end
+
+if cmd == 'push' then
+	local file = arg[2]
+	push(file)
 end
 
 
