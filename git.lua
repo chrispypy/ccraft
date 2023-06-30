@@ -83,12 +83,21 @@ local function pull(fileName, saveFile)
 	print('done!')
 end
 
-function push(fileName, commit_msg)
+function push(fileName)
+	if not fileName then
+		print('File not found, aborting!')
+		return
+	end
 	if fileName:sub(1,1) ~= '/' then
 		fileName = shell.dir()..'/'..fileName
 	end
+	print('Bitte Commit message eingeben:')
+	commit_msg = read()
 	file = fs.open(fileName, 'r')
-	if not file then print('File not found, aborting!') end
+	if not file then 
+		print('File not found, aborting!') 
+		return
+	end
 	content = file.readAll()
 	file.close()
 	msg = fileName..'\n'..commit_msg..'\n'..content
@@ -158,7 +167,6 @@ end
 
 if cmd == 'push' then
 	local file = arg[2]
-	local commit_msg = arg[3]
 	push(file, commit_msg)
 end
 
