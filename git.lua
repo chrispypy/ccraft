@@ -24,7 +24,7 @@ local function listFiles(files)
 end
 
 local function fetchFiles()
-	shell.run('wget '..list_url..' temp')
+	shell.run('wget '..list_url..' /temp')
 	local src_file = fs.open('/temp', 'r')
 	local src = src_file.readAll()
 	src_file.close()
@@ -89,9 +89,11 @@ function push(fileName)
 		return
 	end
 
-	if fileName:sub(1,1) ~= '/' then
-		fileName = shell.dir()..'/'..fileName
-	end
+	local file_split = fileName:gmatch("[^.]+")
+	local name = file_split()
+	fileName = name..'.lua'
+
+	fileName = shell.dir()..'/'..fileName
 	print('Bitte Commit message eingeben:')
 	commit_msg = read()
 	file = fs.open(fileName, 'r')
