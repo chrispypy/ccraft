@@ -28,7 +28,7 @@ local function fetchFiles()
 	local src_file = fs.open('temp', 'r')
 	local src = src_file.readAll()
 	src_file.close()
-	shell.run('rm temp')
+	shell.run('rm /temp')
 	local filename_iter = src:gmatch('\"[^\"/]+\.lua\"')
 	local files = {}
 	local counter = 1
