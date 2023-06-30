@@ -25,7 +25,7 @@ end
 
 local function fetchFiles()
 	shell.run('wget '..list_url..' temp')
-	local src_file = fs.open('temp', 'r')
+	local src_file = fs.open('/temp', 'r')
 	local src = src_file.readAll()
 	src_file.close()
 	shell.run('rm /temp')
@@ -88,6 +88,7 @@ function push(fileName)
 		print('File not found, aborting!')
 		return
 	end
+
 	if fileName:sub(1,1) ~= '/' then
 		fileName = shell.dir()..'/'..fileName
 	end
