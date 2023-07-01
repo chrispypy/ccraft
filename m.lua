@@ -12,6 +12,11 @@ Face = 0
 --       2 
 --       x-
 --
+function saveCords()
+	filePath = 'data/cords.txt'
+	cords = {Face=Face, X=X, Y=Y, Z=Z}
+	return H.saveTable(filePath, cords)
+end
 
 function left(n)
 	if not n then n = 1 end
@@ -195,6 +200,21 @@ function forceHome()
 end
 
 
+function home()
+	while Face ~= 2 and X > 0 do right() end
+	forward(X)
+	while Face ~= 0 and X < 0 do right() end
+	forward(-X)
+	while Face ~= 3 and Y > 0 do right() end
+	forward(Y)
+	while Face ~= 1 and Y < 0 do right() end
+	forward(-Y)
+	if Z < 0 then
+		up(-Z)
+	else
+		down(Z)
+	end
+end
 --
 --   Face:
 --       x+

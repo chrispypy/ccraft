@@ -95,6 +95,13 @@ function selectItem(item)
 
 end
 
+function placeItem(item)
+	local start_slot = turtle.getSelectedSlot()
+	selectItem(item)
+	turtple.place()
+	turtle.select(start_slot)
+end
+
 function unloadItems(items)
 	for _,item in pairs(items) do
 		while selectItem(item) do
@@ -109,6 +116,20 @@ function unloadItemsDown(items)
 			turtle.dropDown()
 		end
 	end
+end
+
+function unloadItemsAll()
+	local start_slot = turtle.getSelectedSlot()
+	local counter = 0
+	for i =1,16 do
+		if turtle.getItemDetail(i) then:
+			turtle.select(i)
+			turtle.drop()
+			counter = counter+1
+		end
+	end
+	turtle.select(start_slot)
+	return counter
 end
 
 function cleanInv()
