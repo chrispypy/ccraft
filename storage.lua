@@ -94,10 +94,12 @@ function unloadToKiste(kiste)
 	end
 end
 
+
+
 function main()
-	goToInput()
+	M.right()
 	takeAllItems()
-	goFromInput()
+	M.left()
 
 	for i=1,16 do
 		item = turtle.getItemDetail(i)
@@ -105,6 +107,15 @@ function main()
 	end
 
 	unloadItemsDown(getInventory())
+end
+
+function takeAllItems()
+	start_slot = turtle.getSelectedSlot()
+	for i =1,16 do
+		turtle.suck()
+	end
+	turtle.select(start_slot)
+	
 end
 
 
