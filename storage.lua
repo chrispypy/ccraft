@@ -39,7 +39,7 @@ function refuel()
     enterKiste()
     takeItem( kohle, anzahl )
     exitKiste()
-    H.home()
+    M.home()
 end
 
 function storeItem(item)
@@ -48,7 +48,7 @@ function storeItem(item)
     enterKiste()
     unloadToKiste( kiste )
     exitKiste()
-    H.home()
+    M.home()
 end
 
 
