@@ -98,7 +98,7 @@ end
 function placeItem(item)
 	local start_slot = turtle.getSelectedSlot()
 	selectItem(item)
-	turtple.place()
+	turtle.place()
 	turtle.select(start_slot)
 end
 
@@ -112,7 +112,7 @@ end
 
 function unloadItemsDown(items)
 	for _,item in pairs(items) do
-		while selectItem(item) do
+		while item and selectItem(item) do
 			turtle.dropDown()
 		end
 	end
