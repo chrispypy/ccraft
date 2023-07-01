@@ -155,6 +155,7 @@ function loadListe()
 	end
  local	liste =  textutils.unserialize(file.readAll())
  file.close()
+ if not liste then liste = {} end
  return liste
 end
 
