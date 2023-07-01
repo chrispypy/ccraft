@@ -104,7 +104,7 @@ end
 
 function unloadItems(items)
 	for _,item in pairs(items) do
-		while selectItem(item) do
+		while item and selectItem(item) do
 			turtle.drop()
 		end
 	end
