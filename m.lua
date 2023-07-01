@@ -17,6 +17,15 @@ function saveCords()
 	cords = {Face=Face, X=X, Y=Y, Z=Z}
 	return H.saveTable(filePath, cords)
 end
+function loadCords()
+	filePath = 'data/cords.txt'
+	local t = H.loadTable(filePath)
+	X = t.X
+	Y = t.Y
+	Z = t.Z
+	Face = t.Face
+end
+
 
 function left(n)
 	if not n then n = 1 end
