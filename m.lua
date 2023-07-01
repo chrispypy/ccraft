@@ -24,6 +24,7 @@ function left(n)
 		Face = (Face+3)%4
 		turtle.turnLeft()
 	end
+	saveCords()
 	return true
 end
 
@@ -33,6 +34,7 @@ function right(n)
 		Face = (Face+1)%4
 		turtle.turnRight()
 	end
+	saveCords()
 	return true
 end
 
@@ -43,6 +45,7 @@ function down(n)
 		if not turtle.down() then return false end
 		Z = Z-1
 	end
+	saveCords()
 	return true
 end
 function up(n)
@@ -52,6 +55,7 @@ function up(n)
 		if not turtle.up() then return false end
 		Z = Z+1
 	end
+	saveCords()
 	return true
 end
 
@@ -66,6 +70,7 @@ function forward(n)
 		elseif Face == 3 then Y = Y-1
 		end
 	end
+	saveCords()
 	return true
 end
 
@@ -80,6 +85,7 @@ function back(n)
 		elseif Face == 3 then Y = Y+1
 		end
 	end
+	saveCords()
 	return true
 end
 
