@@ -122,7 +122,7 @@ function unloadItemsAll()
 	local start_slot = turtle.getSelectedSlot()
 	local counter = 0
 	for i =1,16 do
-		if turtle.getItemDetail(i) then:
+		if turtle.getItemDetail(i) then
 			turtle.select(i)
 			turtle.drop()
 			counter = counter+1
