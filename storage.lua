@@ -102,8 +102,10 @@ function main()
 	M.left()
 
 	for i=1,16 do
-		item = turtle.getItemDetail(i)
-		storeItem(item.name)
+		local item = turtle.getItemDetail(i)
+		if item and item.name then
+			storeItem(item.name)
+		end
 	end
 
 	unloadItemsDown(getInventory())
