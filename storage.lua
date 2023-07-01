@@ -108,7 +108,7 @@ function main()
 		end
 	end
 
-	unloadItemsDown(H.getInventory())
+	H.unloadItemsDown(H.getInventory())
 end
 
 function takeAllItems()
