@@ -43,6 +43,7 @@ function refuel()
 end
 
 function storeItem(item)
+    if not item then return end
     kiste = liste[item]
     goToKiste( kiste )
     enterKiste()
