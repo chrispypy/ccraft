@@ -214,6 +214,9 @@ function home()
 	else
 		down(Z)
 	end
+	while Face ~= 0 do
+		right()
+	end
 end
 --
 --   Face:
