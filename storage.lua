@@ -1,5 +1,6 @@
 os.loadAPI('/mods/H')
 os.loadAPI('/mods/M')
+filename = "/data/storageList.txt"
 HT = 3
 LEN = 3
 
@@ -59,6 +60,7 @@ function goToKiste(kiste)
 	if not kiste then
 		return
 	end
+ kiste = kiste-1
 	local x = math.floor(kiste/HT)
 	local y = math.mod(kiste, HT)
 	M.forward(2*x+1)
@@ -66,8 +68,9 @@ function goToKiste(kiste)
 end
 
 function registerItem(kiste, item)
-	liste[item] = kiste
-	saveListe(liste)
+ liste[item] = kiste
+ H.saveTable(filename, liste)
+	--saveListe(liste)
 end
 
 function goToItem(item)
@@ -75,17 +78,20 @@ function goToItem(item)
 end
 
 
+function countKistenItems(kiste)
+	local chest = peripheral.wrap('front')
+ return H.len(chest.list())
+end
+
 function scanKiste(kiste)
 	local chest = peripheral.wrap('front')
 	local contents = chest.list()
 	for _,item in pairs(contents) do
 		if item then
-			registerItem(kiste, item)
+			registerItem(kiste, item.name)
 		end
 
 	end
-	M.back()
-	M.right()
 end
 
 function unloadToKiste(kiste)
@@ -100,6 +106,16 @@ end
 
 
 function main()
+ M.loadCords()
+ M.home()
+
+	M.right()
+ while countKistenItems() <= 15 do
+  os.sleep(5)
+ end
+	M.left()
+
+ kontrolliereKisten()
 
 	M.right()
 	takeAllItems()
@@ -114,14 +130,13 @@ function main()
 
 	H.unloadItemsDown(H.getInventory())
 
- kontrolliereKisten()
 end
 
 function kontrolliereKisten()
  for i=1,HT*LEN do
   goToKiste(i)
   enterKiste()
-  scanKiste()
+  scanKiste(i)
   exitKiste()
   M.home()
  end
@@ -160,4 +175,5 @@ function loadListe()
 end
 
 liste = loadListe()
+print(H.len(liste))
 main()
