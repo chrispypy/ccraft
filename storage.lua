@@ -2,7 +2,7 @@ os.loadAPI('/mods/H')
 os.loadAPI('/mods/M')
 filename = "/data/storageList.txt"
 HT = 3
-LEN = 3
+LEN = 6
 
 function enterKiste()
     M.go("lf")
