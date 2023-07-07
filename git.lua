@@ -69,7 +69,7 @@ local function pull(fileName, saveFile)
 	if not saveFile then
 		if #name == 1 then
 			saveFile = api_dir..string.upper(name)
-			shell.run('rm '..api_dir_old..'.lua')
+			shell.run('rm '..api_dir_old..saveFile..'.lua')
 			shell.run('mv '..saveFile..' '..api_dir_old)
 		else 
 			saveFile = prog_dir..name..'.lua' 
